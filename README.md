@@ -7,7 +7,7 @@ This port is built on the legacy nintendo switch branch, compatible with the [LÃ
 Also, derivative works (mods, forks, etc.) of FNF Rewritten must be open-source. The build methods shown in this README technically make one's code open-source anyway, but uploading it to GitHub or a similar platform is advised.
 
 # Building
-Building the Switch port of FNF Rewritten as a LOVE file is recommended since it's easier to set up and work with.
+No way to do yet
 
 
 ## Other
