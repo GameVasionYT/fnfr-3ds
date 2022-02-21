@@ -23,7 +23,7 @@ local hauntedHouse
 
 return {
 	enter = function(self, previous, songNum, songAppend)
-		weeks:enter()
+		weeksPixel:enter()
 
 		song = songNum
 		difficulty = songAppend
@@ -40,7 +40,7 @@ return {
 	end,
 
 	load = function(self)
-		weeks:load()
+		weeksPixel:load()
 
 		if song == 2 then
 			inst = love.audio.newSource("music/week2/south-inst.ogg", "stream")
@@ -53,16 +53,16 @@ return {
 		self:initUI()
 
 		inst:play()
-		weeks:voicesPlay()
+		weeksPixel:voicesPlay()
 	end,
 
 	initUI = function(self)
-		weeks:initUI()
+		weeksPixel:initUI()
 
 		if song == 2 then
-			weeks:generateNotes(love.filesystem.load("charts/week2/south" .. difficulty .. ".lua")())
+			weeksPixel:generateNotes(love.filesystem.load("charts/week2/south" .. difficulty .. ".lua")())
 		else
-			weeks:generateNotes(love.filesystem.load("charts/week2/spookeez" .. difficulty .. ".lua")())
+			weeksPixel:generateNotes(love.filesystem.load("charts/week2/spookeez" .. difficulty .. ".lua")())
 		end
 	end,
 
@@ -87,7 +87,7 @@ return {
 			return
 		end
 
-		weeks:update(dt)
+		weeksPixel:update(dt)
 
 		if not graphics.isFading() and not inst:isPlaying() and not voices:isPlaying() then
 			if storyMode and song < 2 then
@@ -99,11 +99,11 @@ return {
 			end
 		end
 
-		weeks:updateUI(dt)
+		weeksPixel:updateUI(dt)
 	end,
 
 	draw = function(self)
-		weeks:draw()
+		weeksPixel:draw()
 
 		if gameOver then return end
 
@@ -119,15 +119,15 @@ return {
 				love.graphics.translate(cam.x, cam.y)
 
 			love.graphics.pop()
-			weeks:drawRating(0.9)
+			weeksPixel:drawRating(0.9)
 		love.graphics.pop()
 
-		weeks:drawUI()
+		weeksPixel:drawUI()
 	end,
 
 	leave = function(self)
 		hauntedHouse = nil
 
-		weeks:leave()
+		weeksPixel:leave()
 	end
 }

@@ -73,7 +73,7 @@ return {
 	end,
 
 	load = function(self)
-		weeks:load()
+		weeksPixel:load()
 
 		if song == 3 then
 			camScale.x, camScale.y = 0.9, 0.9
@@ -109,26 +109,26 @@ return {
 					camTimer = Timer.tween(2, cam, {x = 100, y = 75, sizeX = 0.9, sizeY = 0.9}, "out-quad")
 
 					inst:play()
-					weeks:voicesPlay()
+					weeksPixel:voicesPlay()
 				end
 			)
 
 			audio.playSound(sounds["lights on"])
 		else
 			inst:play()
-			weeks:voicesPlay()
+			weeksPixel:voicesPlay()
 		end
 	end,
 
 	initUI = function(self)
-		weeks:initUI()
+		weeksPixel:initUI()
 
 		if song == 3 then
-			weeks:generateNotes(love.filesystem.load("charts/week5/winter-horrorland" .. difficulty .. ".lua")())
+			weeksPixel:generateNotes(love.filesystem.load("charts/week5/winter-horrorland" .. difficulty .. ".lua")())
 		elseif song == 2 then
-			weeks:generateNotes(love.filesystem.load("charts/week5/eggnog" .. difficulty .. ".lua")())
+			weeksPixel:generateNotes(love.filesystem.load("charts/week5/eggnog" .. difficulty .. ".lua")())
 		else
-			weeks:generateNotes(love.filesystem.load("charts/week5/cocoa" .. difficulty .. ".lua")())
+			weeksPixel:generateNotes(love.filesystem.load("charts/week5/cocoa" .. difficulty .. ".lua")())
 		end
 	end,
 
@@ -155,7 +155,7 @@ return {
 		end
 
 		if not scaryIntro then
-			weeks:update(dt)
+			weeksPixel:update(dt)
 
 			if not scaryIntro and not graphics.isFading() and not inst:isPlaying() and not voices:isPlaying() then
 				if storyMode and song < 3 then
@@ -179,12 +179,12 @@ return {
 				end
 			end
 
-			weeks:updateUI(dt)
+			weeksPixel:updateUI(dt)
 		end
 	end,
 
 	draw = function(self)
-		weeks:draw()
+		weeksPixel:draw()
 
 		if gameOver then return end
 
@@ -207,7 +207,7 @@ return {
 			love.graphics.push()
 				love.graphics.translate(cam.x * 1.1, cam.y * 1.1)
 			love.graphics.pop()
-			weeks:drawRating(0.9)
+			weeksPixel:drawRating(0.9)
 		love.graphics.pop()
 
 		if not scaryIntro then
@@ -302,6 +302,6 @@ return {
 
 		santa = nil
 
-		weeks:leave()
+		weeksPixel:leave()
 	end
 }

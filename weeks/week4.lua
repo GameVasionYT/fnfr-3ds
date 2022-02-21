@@ -65,7 +65,7 @@ return {
 	end,
 
 	load = function(self)
-		weeks:load()
+		weeksPixel:load()
 
 		if song == 3 then
 			inst = love.audio.newSource("music/week4/milf-inst.ogg", "stream")
@@ -81,18 +81,18 @@ return {
 		self:initUI()
 
 		inst:play()
-		weeks:voicesPlay()
+		weeksPixel:voicesPlay()
 	end,
 
 	initUI = function(self)
-		weeks:initUI()
+		weeksPixel:initUI()
 
 		if song == 3 then
-			weeks:generateNotes(love.filesystem.load("charts/week4/milf" .. difficulty .. ".lua")())
+			weeksPixel:generateNotes(love.filesystem.load("charts/week4/milf" .. difficulty .. ".lua")())
 		elseif song == 2 then
-			weeks:generateNotes(love.filesystem.load("charts/week4/high" .. difficulty .. ".lua")())
+			weeksPixel:generateNotes(love.filesystem.load("charts/week4/high" .. difficulty .. ".lua")())
 		else
-			weeks:generateNotes(love.filesystem.load("charts/week4/satin-panties" .. difficulty .. ".lua")())
+			weeksPixel:generateNotes(love.filesystem.load("charts/week4/satin-panties" .. difficulty .. ".lua")())
 		end
 	end,
 
@@ -117,7 +117,7 @@ return {
 			return
 		end
 
-		weeks:update(dt)
+		weeksPixel:update(dt)
 
 		-- Hardcoded M.I.L.F camera scaling
 		if song == 3 and musicTime > 56000 and musicTime < 67000 and musicThres ~= oldMusicThres and math.fmod(musicTime, 60000 / bpm) < 100 then
@@ -136,11 +136,11 @@ return {
 			end
 		end
 
-		weeks:updateUI(dt)
+		weeksPixel:updateUI(dt)
 	end,
 
 	draw = function(self)
-		weeks:draw()
+		weeksPixel:draw()
 
 		if gameOver then return end
 
@@ -156,10 +156,10 @@ return {
 				love.graphics.translate(cam.x, cam.y)
 
 			love.graphics.pop()
-			weeks:drawRating(1)
+			weeksPixel:drawRating(1)
 		love.graphics.pop()
 
-		weeks:drawUI()
+		weeksPixel:drawUI()
 	end,
 
 	leave = function()
@@ -169,6 +169,6 @@ return {
 		limoDancer = nil
 		limo = nil
 
-		weeks:leave()
+		weeksPixel:leave()
 	end
 }

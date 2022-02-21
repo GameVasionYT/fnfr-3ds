@@ -23,7 +23,7 @@ local stageBack, stageFront, curtains
 
 return {
 	enter = function(self, previous, songNum, songAppend)
-		weeks:enter()
+		weeksPixel:enter()
 
 		difficulty = songAppend
 
@@ -31,20 +31,20 @@ return {
 	end,
 
 	load = function(self)
-		weeks:load()
+		weeksPixel:load()
 
 		inst = nil
 		voices = love.audio.newSource("music/tutorial/tutorial.ogg", "stream")
 
 		self:initUI()
 
-		weeks:voicesPlay()
+		weeksPixel:voicesPlay()
 	end,
 
 	initUI = function(self)
-		weeks:initUI()
+		weeksPixel:initUI()
 
-		weeks:generateNotes(love.filesystem.load("charts/tutorial/tutorial" .. difficulty .. ".lua")())
+		weeksPixel:generateNotes(love.filesystem.load("charts/tutorial/tutorial" .. difficulty .. ".lua")())
 	end,
 
 	update = function(self, dt)
@@ -126,11 +126,11 @@ return {
 			graphics.fadeOut(0.5, function() Gamestate.switch(menu) end)
 		end
 
-		weeks:updateUI(dt)
+		weeksPixel:updateUI(dt)
 	end,
 
 	draw = function(self)
-		weeks:draw()
+		weeksPixel:draw()
 
 		if gameOver then return end
 
@@ -150,10 +150,10 @@ return {
 				love.graphics.translate(cam.x * 1.1, cam.y * 1.1)
 
 			love.graphics.pop()
-			weeks:drawRating(0.9)
+			weeksPixel:drawRating(0.9)
 		love.graphics.pop()
 
-		weeks:drawUI()
+		weeksPixel:drawUI()
 	end,
 
 	leave = function(self)
@@ -161,6 +161,6 @@ return {
 		stageFront = nil
 		curtains = nil
 
-		weeks:leave()
+		weeksPixel:leave()
 	end
 }
